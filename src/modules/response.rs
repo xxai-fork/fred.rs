@@ -262,9 +262,8 @@ where
   fn from_value(value: RedisValue) -> Result<Vec<T>, RedisError> {
     debug_type!("FromRedis(Vec<T>): {:?}", value);
     match value {
-      RedisValue::Bytes(bytes) => {
-        T::from_owned_bytes(bytes.to_vec()).ok_or(RedisError::new_parse("Cannot convert from bytes"))
-      },
+      RedisValue::Bytes(bytes) => T::from_owned_bytes(bytes.to_vec())
+        .ok_or(RedisError::new_parse("T::from_owned_bytes Cannot convert from bytes")),
       RedisValue::String(string) => {
         // hacky way to check if T is bytes without consuming `string`
         if T::from_owned_bytes(vec![]).is_some() {
