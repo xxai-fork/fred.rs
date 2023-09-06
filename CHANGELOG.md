@@ -1,4 +1,17 @@
+## 6.3.1
+
+* Update various dependencies
+* Move `pretty-env-logger` to `dev-dependencies`
+* Update rustfmt.toml
+
 ## 6.3.0
+
+* Fix cluster replica discovery with Elasticache
+* Fix cluster replica `READONLY` usage
+* Fix compilation error with `full-tracing`
+* Support `Vec<(T1, T2, ...)>` with `FromRedis`
+
+## 6.2.2
 
 * Fix cluster replica discovery with Elasticache
 * Fix cluster replica `READONLY` usage
@@ -12,7 +25,7 @@
 ## 6.2.0
 
 * Add `Pipeline::try_all`
-* Add missing pubsub commands 
+* Add missing pubsub commands
 * Improve docs, examples
 
 ## 6.1.0
@@ -29,13 +42,13 @@
 * Add a manual `Pipeline` interface for pipelining commands within a task.
 * Add a `Replica` client for interacting with replica nodes.
 * Rework the `Transaction` interface to buffer commands in memory before EXEC/DISCARD.
-* Rework the cluster discovery and failover implementation. 
+* Rework the cluster discovery and failover implementation.
 * Rework the MOVED/ASK implementation to more quickly and reliably follow cluster redirects.
 * Rework the sentinel interface to more reliably handle failover scenarios.
 * Fix several bugs related to detecting closed connections.
 * Support the `functions` interface.
-* Add `Script`, `Library`, and `Function` structs. 
-* Add `Message` and `MessageKind` pubsub structs. 
+* Add `Script`, `Library`, and `Function` structs.
+* Add `Message` and `MessageKind` pubsub structs.
 * Add a DNS configuration interface.
 * Rework the `native-tls` interface to support fully customizable TLS configurations.
 * Add `rustls` support.
@@ -50,7 +63,7 @@ Potentially breaking changes in 6.x:
 * New TLS feature flags: `enable-rustls` and `enable-native-tls`.
   * `vendored-tls` is now `vendored-openssl`
 * New TLS configuration process: see the [example](examples/tls.rs).
-* New [transaction](examples/transactions.rs) interface. 
+* New [transaction](examples/transactions.rs) interface.
   * `Transaction` commands are now buffered in memory before calling `exec()` or `discard()`.
 * New backpressure configuration options, most notably the `Drain` policy. This is now the default.
 * Changed the type and fields on `BackpressurePolicy::Sleep`.
@@ -93,7 +106,7 @@ Potentially breaking changes in 6.x:
 ## 5.0.0-beta.1
 
 * Rewrite the [protocol parser](https://github.com/aembke/redis-protocol.rs) so it can decode frames without moving or copying the underlying bytes
-* Change most command implementations to avoid unnecessary allocations when using static str slices 
+* Change most command implementations to avoid unnecessary allocations when using static str slices
 * Rewrite the public interface to use different traits for different parts of the redis interface
 * Relax some restrictions on certain commands being used in a transaction
 * Implement the Streams interface (XADD, XREAD, etc)
@@ -170,11 +183,11 @@ See below.
 
 ## 3.0.0-beta.2
 
-* Extend and refactor RedisConfig options 
-* Change RedisKey to work with bytes, not str 
-* Support unblocking clients with a control connection 
-* First draft of chaos monkey tests 
-* Custom reconnect errors feature 
+* Extend and refactor RedisConfig options
+* Change RedisKey to work with bytes, not str
+* Support unblocking clients with a control connection
+* First draft of chaos monkey tests
+* Custom reconnect errors feature
 
 ## 3.0.0-beta.1
 
@@ -182,7 +195,7 @@ See below.
 * Add Lua support
 * Add transaction support
 * Add hyperloglog, geo, acl, memory, slowlog, and cluster command support
-* Add tests 
+* Add tests
 * Add [pipeline_test](bin/pipeline_test) application
 
 ## < 3.0.0
